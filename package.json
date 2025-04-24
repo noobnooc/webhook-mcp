@@ -1,15 +1,17 @@
 {
   "name": "webhook-mcp",
+  "version": "0.0.1",
+  "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy --minify",
-    "cf-typegen": "wrangler types --env-interface CloudflareBindings"
+    "build": "tsc",
+    "inspector": "npx @modelcontextprotocol/inspector node dist/index.js",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
-    "agents": "^0.0.60",
-    "hono": "^4.7.7"
+    "@modelcontextprotocol/sdk": "^1.10.2"
   },
   "devDependencies": {
-    "wrangler": "^4.4.0"
+    "@types/node": "^22.14.1",
+    "typescript": "^5.8.3"
   }
 }
