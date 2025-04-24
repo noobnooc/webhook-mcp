@@ -2,6 +2,9 @@
   "name": "webhook-mcp",
   "version": "0.0.2",
   "type": "module",
+  "bin": {
+    "webhook-mcp": "dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "inspector": "npx @modelcontextprotocol/inspector node dist/index.js",
