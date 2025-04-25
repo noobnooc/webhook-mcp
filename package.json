@@ -11,7 +11,7 @@
     "publish": "npm run build && npm publish",
     "docker:build": "docker build -t webhook-mcp:latest .",
     "docker:test": "docker run -e WEBHOOK_URL=https://example.com webhook-mcp:latest",
-    "docker:publish": "docker tag webhook-mcp:latest noobnooc/webhook-mcp:latest && docker tag webhook-mcp:latest noobnooc/webhook-mcp:0.0.4 && docker push noobnooc/webhook-mcp:latest && docker push noobnooc/webhook-mcp:0.0.4"
+    "docker:publish": "docker tag webhook-mcp:latest noobnooc/webhook-mcp:latest && docker tag webhook-mcp:latest noobnooc/webhook-mcp:0.0.5 && docker push noobnooc/webhook-mcp:latest && docker push noobnooc/webhook-mcp:0.0.5"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.2"
