@@ -20,15 +20,33 @@ const server = new McpServer({
 });
 
 // Add an addition tool
-server.tool("call-webhook", "Call a webhook", {}, async ({}) => {
-  const webhookUrl = process.env.WEBHOOK_URL;
+server.tool(
+  "call-webhook",
+  "Call a webhook with optional `message` and `url` parameters",
+  {
+    // In the inspector, empty values are `null`
+    message: z.union([z.string().optional(), z.null()]),
+    url: z.union([z.string().url(), z.string().optional(), z.null()]),
+  },
+  async ({ message, url }) => {
+    const webhookUrl = process.env.WEBHOOK_URL;
 
-  await fetch(webhookUrl!);
+    await fetch(webhookUrl!, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        ...(message && { message }),
+        ...(url && { externalLink: url }),
+      }),
+    });
 
-  return {
-    content: [],
-  };
-});
+    return {
+      content: [{ type: "text", text: "Webhook called successfully" }],
+    };
+  }
+);
 
 // Start receiving messages on stdin and sending messages on stdout
 const transport = new StdioServerTransport();
