@@ -65,17 +65,10 @@ Add the following configuration to your VS Code `settings.json`:
   "mcp": {
     "servers": {
       "notification": {
-        "command": "docker",
-        "args": [
-          "run",
-          "-i",
-          "--rm",
-          "-e",
-          "WEBHOOK_URL",
-          "noobnooc/webhook-mcp"
-        ],
+        "command": "npx",
+        "args": ["-y", "webhook-mcp"],
         "env": {
-          "WEBHOOK_URL": "<your-webhook-url-here>"
+          "WEBHOOK_URL": "your-webhook-url-here"
         }
       }
     }
@@ -90,10 +83,17 @@ Add the following configuration to your VS Code `settings.json`:
   "mcp": {
     "servers": {
       "notification": {
-        "command": "npx",
-        "args": ["-y", "webhook-mcp"],
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "WEBHOOK_URL",
+          "noobnooc/webhook-mcp"
+        ],
         "env": {
-          "WEBHOOK_URL": "your-webhook-url-here"
+          "WEBHOOK_URL": "<your-webhook-url-here>"
         }
       }
     }
