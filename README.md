@@ -1,6 +1,7 @@
 # Webhook MCP Server
 
-[![Install in VS Code](https://img.shields.io/badge/VS_Code-Install_Server-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=notification&inputs=%5B%7B%22type%22%3A%20%22promptString%22%2C%22id%22%3A%20%22notification_webhook_url%22%2C%22description%22%3A%20%22Notification%20Webhook%20URL%22%2C%22password%22%3A%20true%7D%5D&config=%7B%22command%22%3A%20%22npx%22%2C%22args%22%3A%20%5B%22-y%22%2C%20%22webhook-mcp%22%5D%2C%22env%22%3A%20%7B%20%22WEBHOOK_URL%22%3A%20%22%24%7Binput%3Anotification_webhook_url%7D%22%20%7D%7D) [![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Install_Server-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=notification&inputs=%5B%7B%22type%22%3A%20%22promptString%22%2C%22id%22%3A%20%22notification_webhook_url%22%2C%22description%22%3A%20%22Notification%20Webhook%20URL%22%2C%22password%22%3A%20true%7D%5D&config=%7B%22command%22%3A%20%22npx%22%2C%22args%22%3A%20%5B%22-y%22%2C%20%22webhook-mcp%22%5D%2C%22env%22%3A%20%7B%20%22WEBHOOK_URL%22%3A%20%22%24%7Binput%3Anotification_webhook_url%7D%22%20%7D%7D&quality=insiders)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-NPM-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=notification&inputs=%5B%7B%22type%22%3A%20%22promptString%22%2C%22id%22%3A%20%22notification_webhook_url%22%2C%22description%22%3A%20%22Notification%20Webhook%20URL%22%2C%22password%22%3A%20true%7D%5D&config=%7B%22command%22%3A%20%22npx%22%2C%22args%22%3A%20%5B%22-y%22%2C%20%22webhook-mcp%22%5D%2C%22env%22%3A%20%7B%20%22WEBHOOK_URL%22%3A%20%22%24%7Binput%3Anotification_webhook_url%7D%22%20%7D%7D) [![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-NPM-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=notification&inputs=%5B%7B%22type%22%3A%20%22promptString%22%2C%22id%22%3A%20%22notification_webhook_url%22%2C%22description%22%3A%20%22Notification%20Webhook%20URL%22%2C%22password%22%3A%20true%7D%5D&config=%7B%22command%22%3A%20%22npx%22%2C%22args%22%3A%20%5B%22-y%22%2C%20%22webhook-mcp%22%5D%2C%22env%22%3A%20%7B%20%22WEBHOOK_URL%22%3A%20%22%24%7Binput%3Anotification_webhook_url%7D%22%20%7D%7D&quality=insiders)
+[![Install in VS Code](https://img.shields.io/badge/VS_Code-Docker-0098FF?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=notification&inputs=%5B%7B%22type%22%3A%20%22promptString%22%2C%22id%22%3A%20%22notification_webhook_url%22%2C%22description%22%3A%20%22Notification%20Webhook%20URL%22%2C%22password%22%3A%20true%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22WEBHOOK_URL%22%2C%22noobnooc%2Fwebhook-mcp%22%5D%2C%22env%22%3A%7B%22WEBHOOK_URL%22%3A%22%24%7Binput%3Anotification_webhook_url%7D%22%7D%7D) [![Install in VS Code Insiders](https://img.shields.io/badge/VS_Code_Insiders-Docker-24bfa5?style=flat-square&logo=visualstudiocode&logoColor=white)](https://insiders.vscode.dev/redirect/mcp/install?name=notification&inputs=%5B%7B%22type%22%3A%20%22promptString%22%2C%22id%22%3A%20%22notification_webhook_url%22%2C%22description%22%3A%20%22Notification%20Webhook%20URL%22%2C%22password%22%3A%20true%7D%5D&config=%7B%22command%22%3A%22docker%22%2C%22args%22%3A%5B%22run%22%2C%22-i%22%2C%22--rm%22%2C%22-e%22%2C%22WEBHOOK_URL%22%2C%22noobnooc%2Fwebhook-mcp%22%5D%2C%22env%22%3A%7B%22WEBHOOK_URL%22%3A%22%24%7Binput%3Anotification_webhook_url%7D%22%7D%7D&quality=insiders)
 
 A Model Context Protocol (MCP) server that sends webhook notifications when called.
 
@@ -8,9 +9,13 @@ You can use this server with webhook notification services like [Echobell](https
 
 ## Configuration
 
+There are several ways to configure the MCP server:
+
 ### Claude & Cursor & Windsurf
 
 Configure Claude, Cursor or Windsurf to use the MCP server by adding this to your configuration:
+
+- With NPM:
 
 ```json
 {
@@ -26,9 +31,59 @@ Configure Claude, Cursor or Windsurf to use the MCP server by adding this to you
 }
 ```
 
+- With Docker:
+
+```json
+{
+  "mcpServers": {
+    "notification": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "-e",
+        "WEBHOOK_URL",
+        "noobnooc/webhook-mcp"
+      ],
+      "env": {
+        "WEBHOOK_URL": "<your-webhook-url-here>"
+      }
+    }
+  }
+}
+```
+
 ### VS Code
 
 Add the following configuration to your VS Code `settings.json`:
+
+- With NPM:
+
+```json
+{
+  "mcp": {
+    "servers": {
+      "notification": {
+        "command": "docker",
+        "args": [
+          "run",
+          "-i",
+          "--rm",
+          "-e",
+          "WEBHOOK_URL",
+          "noobnooc/webhook-mcp"
+        ],
+        "env": {
+          "WEBHOOK_URL": "<your-webhook-url-here>"
+        }
+      }
+    }
+  }
+}
+```
+
+- With Docker:
 
 ```json
 {
@@ -49,6 +104,13 @@ Add the following configuration to your VS Code `settings.json`:
 ## Environment Variables
 
 - `WEBHOOK_URL` (required): The URL where webhook notifications will be sent
+
+## Parameters
+
+The webhook can be called with optional parameters:
+
+- `message`: Custom message to include in the webhook payload
+- `url`: External URL to include in the webhook payload as `externalLink`
 
 ## Development
 
