@@ -12,6 +12,14 @@ You can use this server with webhook notification services like [Echobell](https
 
 There are several ways to configure the MCP server:
 
+### Installing via Smithery
+
+To install Webhook MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@noobnooc/webhook-mcp):
+
+```bash
+npx -y @smithery/cli install @noobnooc/webhook-mcp --client claude
+```
+
 ### Claude & Cursor & Windsurf
 
 Configure Claude, Cursor or Windsurf to use the MCP server by adding this to your configuration:
@@ -134,12 +142,4 @@ To build and publish the package:
 
 ```bash
 npm run publish
-```
-
-### Installing via Smithery
-
-To install Webhook MCP Server for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@noobnooc/webhook-mcp):
-
-```bash
-npx -y @smithery/cli install @noobnooc/webhook-mcp --client claude
 ```
